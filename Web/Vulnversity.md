@@ -13,34 +13,38 @@ PORT     STATE SERVICE
 3333/tcp open  dec-notes
 ...
 ```
-> 6
+> *Answer*: 6
 
 What version of the squid proxy is running on the machine?
 ```
 # nmap -sV <machine ip>
 3128/tcp open  http-proxy  Squid http proxy 3.5.12
 ```
-> 6
+> *Answer*: 3.5.12
 
 How many ports will nmap scan if the flag -p-400 was used?
-> 400
+> *Answer*: 400
 
 Using the nmap flag -n what will it not resolve?
-> DNS
+> *Answer*: DNS
 
 What is the most likely operating system this machine is running?
 ```
 # nmap -sV -O <machine ip>
+...
 3333/tcp open  http        Apache httpd 2.4.18 ((Ubuntu))
+...
 ```
-> Ubuntu
+> *Answer*: Ubuntu
 
 What port is the web server running on?
 ```
 # nmap -sV <machine ip>
+...
 3333/tcp open  http        Apache httpd 2.4.18 ((Ubuntu))
+...
 ```
-> 3333
+> *Answer*: 3333
 
 
 # Locating directories
