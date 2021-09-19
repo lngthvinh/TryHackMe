@@ -102,23 +102,6 @@ machine:~$ cat /home/bill/user.txt
 ```
 machine:~$ find / -perm -u=s -type f | grep -v "Permission denied"
 ...
-/usr/bin/newuidmap
-/usr/bin/chfn
-/usr/bin/newgidmap
-/usr/bin/sudo
-/usr/bin/chsh
-/usr/bin/passwd
-/usr/bin/pkexec
-/usr/bin/newgrp
-/usr/bin/gpasswd
-/usr/bin/at
-/usr/lib/snapd/snap-confine
-/usr/lib/policykit-1/polkit-agent-helper-1
-/usr/lib/openssh/ssh-keysign
-/usr/lib/eject/dmcrypt-get-device
-/usr/lib/squid/pinger
-/usr/lib/dbus-1.0/dbus-daemon-launch-helper
-/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
 /bin/su
 /bin/ntfs-3g
 /bin/mount
