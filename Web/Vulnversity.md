@@ -13,7 +13,7 @@ PORT     STATE SERVICE
 3333/tcp open  dec-notes
 ...
 ```
-> *Answer*: 6
+> *Answer:* 6
 
 ### What version of the squid proxy is running on the machine?
 ```
@@ -22,13 +22,13 @@ PORT     STATE SERVICE
 3128/tcp open  http-proxy  Squid http proxy 3.5.12
 ...
 ```
-> *Answer*: 3.5.12
+> *Answer:* 3.5.12
 
 ### How many ports will nmap scan if the flag -p-400 was used?
-> *Answer*: 400
+> *Answer:* 400
 
 ### Using the nmap flag -n what will it not resolve?
-> *Answer*: DNS
+> *Answer:* DNS
 
 ### What is the most likely operating system this machine is running?
 ```
@@ -37,7 +37,7 @@ PORT     STATE SERVICE
 3333/tcp open  http        Apache httpd 2.4.18 ((Ubuntu))
 ...
 ```
-> *Answer*: Ubuntu
+> *Answer:* Ubuntu
 
 ### What port is the web server running on?
 ```
@@ -46,7 +46,7 @@ PORT     STATE SERVICE
 3333/tcp open  http        Apache httpd 2.4.18 ((Ubuntu))
 ...
 ```
-> *Answer*: 3333
+> *Answer:* 3333
 
 
 # Locating directories
@@ -58,15 +58,15 @@ PORT     STATE SERVICE
 [14:17:17] 301 -  320B  - /internal  ->  http://10.10.117.6:3333/internal/
 ...
 ```
-> *Answer*: /internal/
+> *Answer:* /internal/
 
 # Compromise the webserver
 
 ### Try upload a few file types to the server, what common extension seems to be blocked?
-> *Answer*: .php
+> *Answer:* .php
 
 ### Run this attack, what extension is allowed?
-> *Answer*: .phtml
+> *Answer:* .phtml
 
 ### What is the name of the user who manages the webserver?
 ```
@@ -74,7 +74,7 @@ $ cat /etc/passwd
 ...
 bill:x:1000:1000:,,,:/home/bill:/bin/bash
 ```
-> *Answer*: bill
+> *Answer:* bill
 
 ### What is the user flag?
 ```
@@ -84,7 +84,7 @@ $ ls -la /home/bill
 $ cat /home/bill/user.txt
 8bd7992fbe8a6ad22a63361004cfcedb
 ```
-> *Answer*: 8bd7992fbe8a6ad22a63361004cfcedb
+> *Answer:* 8bd7992fbe8a6ad22a63361004cfcedb
 
 # Privilege Escalation
 
@@ -119,7 +119,7 @@ $ find / -perm -u=s -type f | grep -v "Permission denied"
 /bin/fusermount
 /sbin/mount.cifs
 ```
-> *Answer*: /bin/systemctl
+> *Answer:* /bin/systemctl
 
 ### Become root and get the last flag (/root/root.txt)
 ```
@@ -150,6 +150,6 @@ bash: no job control in this shell
 root@vulnuniversity:/# cat /root/root.txt
 a58ff8579f0a9270368d33a9966c7fd5
 ```
-> *Answer*: a58ff8579f0a9270368d33a9966c7fd5
+> *Answer:* a58ff8579f0a9270368d33a9966c7fd5
 
 
