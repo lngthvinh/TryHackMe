@@ -1,5 +1,5 @@
 # Reconnaissance
-
+<br /><br /><br /><br /><br />
 ### Scan the box, how many ports are open?
 ```
 # nmap -Pn <machine ip>
