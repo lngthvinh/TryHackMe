@@ -31,6 +31,7 @@ PORT   STATE SERVICE
 └─# dirsearch -u "http://<machine ip>/"
 ...
 [01:06:56] 200 -  732B  - /panel/
+[01:07:21] 200 -  742B  - /uploads/
 ...
 ```
 > *Answer:* 
