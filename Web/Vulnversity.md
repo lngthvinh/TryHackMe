@@ -152,7 +152,9 @@ bash: cannot set terminal process group (2040): Inappropriate ioctl for device
 bash: no job control in this shell
 root@vulnuniversity:/# 
 ```
-<img src="https://i2.wp.com/media4.giphy.com/media/mQG644PY8O7rG/giphy.gif" style="max-width:600px;">
+<h1 align="center">
+  <img src="https://i2.wp.com/media4.giphy.com/media/mQG644PY8O7rG/giphy.gif" style="max-width:600px;">
+</h1>
 
 ```
 root@vulnuniversity:/# cat /root/root.txt
