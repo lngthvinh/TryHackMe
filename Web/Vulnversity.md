@@ -1,5 +1,5 @@
 # Reconnaissance
-<br /><br /><br /><br /><br />
+
 ### Scan the box, how many ports are open?
 ```
 # nmap -Pn <machine ip>
@@ -47,8 +47,7 @@ PORT     STATE SERVICE
 ...
 ```
 > *Answer:* 3333
-
-
+<br><br><br>
 
 # Locating directories
 
