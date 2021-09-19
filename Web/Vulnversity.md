@@ -49,7 +49,7 @@ PORT     STATE SERVICE
 > *Answer:* 3333
 
 
-<br />
+<br><br>
 # Locating directories
 
 ### What is the directory that has an upload form page?
@@ -62,7 +62,7 @@ PORT     STATE SERVICE
 > *Answer:* /internal/
 
 
-<br />
+<br><br>
 # Compromise the webserver
 
 ### Try upload a few file types to the server, what common extension seems to be blocked?
