@@ -74,7 +74,24 @@ PORT     STATE SERVICE
 > *Answer:* .php
 
 ### Run this attack, what extension is allowed?
+Going to use BurpSuite.
+We're going to use Intruder (used for automating customised attacks).
+To begin, make a wordlist with the following extensions in:
+<p><img src="https://i.imgur.com/ED153Nx.png" style="font-size:1rem;width:227px;height:103.976px"></p>
+Now make sure BurpSuite is configured to intercept all your browser traffic. Upload a file, once this request is captured, send it to the Intruder. Click on "Payloads" and select the "Sniper" attack type.
+Click the "Positions" tab now, find the filename and "Add §" to the extension. It should look like so:
+<p><img src="https://i.imgur.com/6dxnzq6.png" style="width:392px;height:267.485px"></p>
 > *Answer:* .phtml
+
+We are going to use a PHP reverse shell as our payload. A reverse shell works by being called on the remote host and forcing this host to make a connection to you. So you'll listen for incoming connections, upload and have your shell executed which will beacon out to you to control!
+Download the following reverse PHP shell <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">here</a>.
+To gain remote access to this machine, follow these steps:
+  1. Edit the php-reverse-shell.php file and edit the ip to be your tun0 ip (you can get this by going to http://10.10.10.10 in the browser of your TryHackMe connected device).
+  2. Rename this file to php-reverse-shell.phtml
+  3. We're now going to listen to incoming connections using netcat. Run the following command: <b>nc -lvnp 1234</b>
+  4. Upload your shell and navigate to <b>http://<machine ip>:3333/internal/uploads/php-reverse-shell.phtml</b> - This will execute your payload
+  5. You should see a connection on your netcat session
+<p><img src="https://i.imgur.com/FGcvTCp.png" style="width:543px;height:133.866px"></p>
 
 ### What is the name of the user who manages the webserver?
 ```
