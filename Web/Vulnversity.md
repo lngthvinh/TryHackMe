@@ -1,6 +1,6 @@
 # Reconnaissance
 
-#### Scan the box, how many ports are open?
+### Scan the box, how many ports are open?
 ```
 # nmap -Pn <machine ip>
 ...
@@ -15,7 +15,7 @@ PORT     STATE SERVICE
 ```
 > *Answer*: 6
 
-What version of the squid proxy is running on the machine?
+### What version of the squid proxy is running on the machine?
 ```
 # nmap -sV <machine ip>
 ...
@@ -24,13 +24,13 @@ What version of the squid proxy is running on the machine?
 ```
 > *Answer*: 3.5.12
 
-How many ports will nmap scan if the flag -p-400 was used?
+### How many ports will nmap scan if the flag -p-400 was used?
 > *Answer*: 400
 
-Using the nmap flag -n what will it not resolve?
+### Using the nmap flag -n what will it not resolve?
 > *Answer*: DNS
 
-What is the most likely operating system this machine is running?
+### What is the most likely operating system this machine is running?
 ```
 # nmap -sV -O <machine ip>
 ...
@@ -39,7 +39,7 @@ What is the most likely operating system this machine is running?
 ```
 > *Answer*: Ubuntu
 
-What port is the web server running on?
+### What port is the web server running on?
 ```
 # nmap -sV <machine ip>
 ...
@@ -51,7 +51,7 @@ What port is the web server running on?
 
 # Locating directories
 
-What is the directory that has an upload form page?
+### What is the directory that has an upload form page?
 ```
 # dirsearch -u "http://<machine ip>:3333/"
 ...
@@ -62,13 +62,13 @@ What is the directory that has an upload form page?
 
 # Compromise the webserver
 
-Try upload a few file types to the server, what common extension seems to be blocked?
+### Try upload a few file types to the server, what common extension seems to be blocked?
 > *Answer*: .php
 
-Run this attack, what extension is allowed?
+### Run this attack, what extension is allowed?
 > *Answer*: .phtml
 
-What is the name of the user who manages the webserver?
+### What is the name of the user who manages the webserver?
 ```
 $ cat /etc/passwd
 ...
@@ -76,7 +76,7 @@ bill:x:1000:1000:,,,:/home/bill:/bin/bash
 ```
 > *Answer*: bill
 
-What is the user flag?
+### What is the user flag?
 ```
 $ ls -la /home/bill
 ...
@@ -88,7 +88,7 @@ $ cat /home/bill/user.txt
 
 # Privilege Escalation
 
-On the system, search for all SUID files. What file stands out?
+### On the system, search for all SUID files. What file stands out?
 ```
 $ find / -perm -u=s -type f | grep -v "Permission denied"
 ...
@@ -121,7 +121,7 @@ $ find / -perm -u=s -type f | grep -v "Permission denied"
 ```
 > *Answer*: /bin/systemctl
 
-Become root and get the last flag (/root/root.txt)
+### Become root and get the last flag (/root/root.txt)
 ```
 /var/www/html/root.service
 [Unit]
