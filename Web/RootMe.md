@@ -49,7 +49,7 @@ To gain remote access to this machine, follow these steps:
   1. Edit the php-reverse-shell.php file and edit the ip to be your tun0 ip (you can get this by going to http://10.10.10.10 in the browser of your TryHackMe connected device).
   2. Rename this file to php-reverse-shell.phtml
   3. We're now going to listen to incoming connections using netcat. Run the following command: <b>nc -lvnp 1234</b>
-  4. Upload your shell and navigate to <b>http://&lt;machine ip&gt;:3333/internal/uploads/php-reverse-shell.phtml&nbsp;</b> - This will execute your payload
+  4. Upload your shell and navigate to <b>http://&lt;machine ip&gt;/uploads/php-reverse-shell.phtml&nbsp;</b> - This will execute your payload
   5. You should see a connection on your netcat session
 ```
 ┌──(root💀kali)-[~]
