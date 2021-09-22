@@ -34,7 +34,7 @@ PORT   STATE SERVICE
 [01:07:21] 200 -  742B  - /uploads/
 ...
 ```
-> *Answer:* 
+> *Answer:* /panel/
 
 
 <br><br>
