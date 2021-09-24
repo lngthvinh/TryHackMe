@@ -269,7 +269,7 @@ Decode cookie sessionId
 
 ### 2nd flag (admin dashboard)
 ```
-Change our userType to admin
+Change userType to admin
 ```
 > *Answer:* THM{heres_the_admin_flag}
 
