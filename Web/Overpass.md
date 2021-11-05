@@ -76,13 +76,15 @@ async function login() {
 } 
 ```
 
-* Use burpsuite
+* Use burpsuite. Intercept the response.
 
-![](tempp/1.png)
+![](temp/1.png)
 
-![](tempp/2.png)
+* Remove `"Incorrect credentials".`
 
-![](tempp/3.png)
+![](temp/2.png)
+
+![](temp/3.png)
 
 * Save key and crack it.
 
